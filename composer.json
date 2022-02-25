@@ -1,0 +1,27 @@
+{
+    "name": "takshak/alogger",
+    "description": "Imager provider package for laravel",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Takshak\\Alogger\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Takshak Tiwari",
+            "email": "takshaktiwari@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Takshak\\Alogger\\AloggerServiceProvider"
+            ]
+        }
+    }
+}

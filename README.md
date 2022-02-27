@@ -25,15 +25,15 @@ All logs will be stored in loggers table. You can set your preference in `alogge
     php artisan vendor:publish --provider="Takshak\Alogger\AloggerServiceProvider"
 
 ### Configuration (alogger.php)
-`**log:**`  you can disable or enable the logger by setting this value *true* or *false*
+**`log:`**  you can disable or enable the logger by setting this value *true* or *false*
 
-`**record:**` set all the available properties which will be recorded. *status* key will define tha this parameter needs to be recorded or not. *except* key will ignore (not record) the matching values
+**`record:`** set all the available properties which will be recorded. *status* key will define tha this parameter needs to be recorded or not. *except* key will ignore (not record) the matching values
 
-`**except:**` pass some urls where alogger will not work, *matches*: pass some parts of url, if current url matches any of these values, logs will not be recorded. *urls*: pass the exact url on which alogger will not log any data
+**`except:`** pass some urls where alogger will not work, *matches*: pass some parts of url, if current url matches any of these values, logs will not be recorded. *urls*: pass the exact url on which alogger will not log any data
 
-`**max_rows:**` maximum number of rows stored in database
+**`max_rows:`** maximum number of rows stored in database
 
-`**max_days:**` number of  days. logs after these days will be deleted
+**`max_days:`** number of  days. logs after these days will be deleted
 
 ### Commands
 **`php artisan alogger:prune`** This will prune the logs depend on max_rows and max_days. log more than *max_rows* and older than *max_days* will be deleted. You can set this command in your scheduler will be manage delete the older logs.

@@ -146,6 +146,19 @@ class Alogger
             unset($sessions[$key]);
         }
 
+        $sessions = array_filter($sessions, function ($item) {
+            if (is_array($item)) {
+                return count($item) ? true : false;
+            }
+            return true;
+        });
+
+        $sessions = array_map(function ($item) {
+            if ($item instanceof \Illuminate\Database\Eloquent\Collection) {
+                return $item->toArray();
+            }
+        }, $sessions);
+
         return $sessions;
     }
 

@@ -95,7 +95,7 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Logger Detail</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" data-dismiss="modal">X</button>
             </div>
 
             <!-- Modal body -->
@@ -105,7 +105,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-dismiss="modal">Close</button>
             </div>
 
         </div>

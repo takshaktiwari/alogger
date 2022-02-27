@@ -14,9 +14,9 @@
             <tr>
                 <td><b>URL</b></td>
                 <td>
-                    <span class="d-block" style="overflow-wrap: break-word; word-break: break-all; hyphens: manual;">
+                    <a href="{{ url($logger->url) }}" target="_blank" class="d-block" style="overflow-wrap: break-word; word-break: break-all; hyphens: manual;">
                         {{ $logger->url }}
-                    </span>
+                    </a>
                 </td>
             </tr>
             <tr>

@@ -17,9 +17,9 @@ class Alogger
      */
     public function handle(Request $request, Closure $next)
     {
-        $alogger = new AloggerService($request);
-        $alogger->log();
-
+        if (config('alogger.log', true)) {
+            (new AloggerService($request))->log();
+        }
         return $next($request);
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
 namespace Takshak\Alogger\Service;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Takshak\Alogger\Models\Logger;
 
@@ -9,7 +8,10 @@ class Alogger
 {
     public $request;
     public $str;
+    public $remarks;
+    public $data;
     public $logger;
+    public $user_id;
 
     public function __construct($request)
     {
@@ -17,11 +19,38 @@ class Alogger
         $this->str = new Str;
     }
 
-    public function log($user_id=null, $url=null, $data=null, $remarks=null)
+    public function remarks($remarks, $data = null)
     {
-        if(!config('alogger.log', true)){
+        $this->remarks = $remarks;
+        $this->data = $data;
+        return $this;
+    }
+    public function activity($activity, $data = null)
+    {
+        $this->remarks($activity, $data);
+        return $this;
+    }
+
+    public function data($data)
+    {
+        $this->data = $data;
+        return $this;
+    }
+
+    public function user($user)
+    {
+        $this->user_id = is_integer($user) ? $user : $user?->id;
+        return $this;
+    }
+
+    public function log($user_id = null, $url = null, $data = null, $remarks = null)
+    {
+        if (!$this->allowLog()) {
             return false;
         }
+
+        $this->data = $data ? $data : $this->data;
+        $this->remarks = $remarks ? $remarks : $this->remarks;
 
         $this->logger = Logger::create([
             'user_id'   =>  $this->getUserId($user_id),
@@ -30,11 +59,29 @@ class Alogger
             'method'    =>  $this->getMethod(),
             'session'   =>  $this->getSession(),
             'request'   =>  $this->getRequest(),
-            'data'      =>  $data,
-            'remarks'   =>  $remarks
+            'data'      =>  $this->data,
+            'remarks'   =>  $this->remarks
         ]);
 
         return $this;
+    }
+
+    public function allowLog()
+    {
+        $allow = true;
+        if (!config('alogger.log', true) || request()->get('l_filters')) {
+            $allow = false;
+        }
+
+        $allow = $this->str->of($this->request->fullUrl())->contains(config('alogger.except.matches', [])) ? false : true;
+        if ($allow) {
+            $allow = in_array($this->request->fullUrl(), config('alogger.except.urls', [])) ? false : true;
+        }
+
+        if ($allow) {
+            $allow = $this->request->get('l_filters') ? false : true;
+        }
+        return $allow;
     }
 
     public function getUrl($url=null)
@@ -57,8 +104,11 @@ class Alogger
 
     public function getUserId($user_id=null)
     {
-        $user_id = $user_id ? $user_id : auth()->id();
-        return in_array($user_id, config('alogger.record.user_id.except', [])) ? null : $user_id;
+        $this->user_id = $user_id ? $user_id : $this->user_id;
+        if (!$this->user_id) {
+            $this->user_id = auth()->id();
+        }
+        return in_array($this->user_id, config('alogger.record.user_id.except', [])) ? null : $this->user_id;
     }
 
     public function getIp()
@@ -88,8 +138,11 @@ class Alogger
 
     public function getSession()
     {
-        $sessions = session()->all();
-        foreach (config('alogger.record.session.except', []) as $key) {
+        $sessions = array_filter(session()->all(), function ($key) {
+            return $this->str->of($key)->contains('login_web') ? false : true;
+        }, ARRAY_FILTER_USE_KEY);
+
+        foreach (config('alogger.record.session.except', ['_token']) as $key) {
             unset($sessions[$key]);
         }
 
@@ -99,7 +152,7 @@ class Alogger
     public function getRequest()
     {
         $requests = $this->request->all();
-        foreach (config('alogger.record.session.except', []) as $key) {
+        foreach (config('alogger.record.session.except', ['_token']) as $key) {
             unset($requests[$key]);
         }
 

@@ -15,8 +15,12 @@
         </div>
         <form method="GET" action="" class="flex-fill d-flex justify-content-end">
             <div class="mr-3 me-3">
+                <input type="text" class="form-control" name="url" value="{{ $request->get('url') }}"
+                    placeholder="Search Url ...">
+            </div>
+            <div class="mr-3 me-3">
                 <input type="text" class="form-control" name="search" value="{{ $request->get('search') }}"
-                    placeholder="Search Here ..." required>
+                    placeholder="Search Here ...">
             </div>
             <button type="submit" class="btn btn-dark" name="l_filters" value="1">Search</button>
         </form>
@@ -87,7 +91,7 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Logger Detail</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
             </div>
 
             <!-- Modal body -->

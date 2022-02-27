@@ -17,15 +17,20 @@ class Loggers extends Component
         $query = Logger::with('user');
 
         if ($this->request->get('url')) {
-            $query->where('url', 'LIKE', $this->request->get('url'));
+            $query->where('url', 'LIKE', '%' . $this->request->get('url') . '%');
         }
         if ($this->request->get('method')) {
-            $query->where('method', 'LIKE', $this->request->get('method'));
+            $query->where('method', $this->request->get('method'));
+        }
+        if ($this->request->get('ip')) {
+            $query->where('ip', 'LIKE', '%' . $this->request->get('ip') . '%');
+        }
+        if ($this->request->get('user_id')) {
+            $query->where('user_id', $this->request->get('user_id'));
         }
 
         if ($this->request->get('search')) {
             $query->where(function ($query) {
-                $query->where('url', 'LIKE', '%' . $this->request->get('search') . '%');
                 $query->orWhere('method', 'LIKE', '%' . $this->request->get('search') . '%');
                 $query->orWhere('session', 'LIKE', '%' . $this->request->get('search') . '%');
                 $query->orWhere('request', 'LIKE', '%' . $this->request->get('search') . '%');

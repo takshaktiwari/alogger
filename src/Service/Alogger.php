@@ -13,9 +13,9 @@ class Alogger
     public $logger;
     public $user_id;
 
-    public function __construct($request)
+    public function __construct($request = null)
     {
-        $this->request = $request;
+        $this->request = $request ? $request : request();
         $this->str = new Str;
     }
 

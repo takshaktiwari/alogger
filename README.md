@@ -26,19 +26,26 @@ All logs will be stored in loggers table. You can set your preference in `alogge
 
 ### Configuration (alogger.php)
 `**log:**`  you can disable or enable the logger by setting this value *true* or *false*
-`**record:**` set all the available properties which will be recorded. *status* key will define tha this paramter needs to be recorded or not. *except* key will ignore (not record) the matching values
+
+`**record:**` set all the available properties which will be recorded. *status* key will define tha this parameter needs to be recorded or not. *except* key will ignore (not record) the matching values
+
 `**except:**` pass some urls where alogger will not work, *matches*: pass some parts of url, if current url matches any of these values, logs will not be recorded. *urls*: pass the exact url on which alogger will not log any data
+
 `**max_rows:**` maximum number of rows stored in database
+
 `**max_days:**` number of  days. logs after these days will be deleted
 
 ### Commands
-`**php artisan alogger:prune**` This will prune the logs depend on max_rows and max_days. log more than *max_rows* and older than *max_days* will be deleted. You can set this command in your scheduler will be manage delete the older logs.
-`**php artisan alogger:prune**` All logs will be cleared / flushed from database.
+**`php artisan alogger:prune`** This will prune the logs depend on max_rows and max_days. log more than *max_rows* and older than *max_days* will be deleted. You can set this command in your scheduler will be manage delete the older logs.
+
+**`php artisan alogger:prune`** All logs will be cleared / flushed from database.
 
 ### Components
 It has two components with compatible with **bootstrap 4** or **5**
-`**<x-alogger-loggers  />**` This component can be used to display all the logs on any page. This has some search and filters and view button for a popup to show the details of the log.
-`**<x-alogger-logger logger-id=""  />**`  This component will show the detail of a log. You need to pass the logger id for which you want to see the details
+
+**`<x-alogger-loggers  />`** This component can be used to display all the logs on any page. This has some search and filters and view button for a popup to show the details of the log.
+
+**`<x-alogger-logger logger-id=""  />`**  This component will show the detail of a log. You need to pass the logger id for which you want to see the details
 
 ### Using alogger manually
 You can use `Alogger Service` to record the log manually from your controller or anywhere else.

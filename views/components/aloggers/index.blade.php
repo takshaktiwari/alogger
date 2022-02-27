@@ -42,6 +42,10 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
+                            <a href="{{ url($l_logger->url) }}" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <b class="px-1">|</b>
                             <a href="{{ $filter(['url' => $l_logger->url]) }}">
                                 {{ strlen($l_logger->url) > 30 ? substr($l_logger->url, 0, 30) . '...' : $l_logger->url }}
                             </a>

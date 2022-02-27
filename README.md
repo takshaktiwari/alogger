@@ -1,12 +1,13 @@
 #  Introduction
 
-Can be used for log / record user activity via middleware or by custom code. It has a route middleware `Alogger::class` and has view components to view logs lists and details in admin / user panel.
+Can be used for log / record user activity via middleware or by custom code. It has a route middleware *Alogger::class* and has view components to view logs lists and details in admin / user panel.
 
 ##  Quick Start
 
 Install using given command:
 
     composer require takshak/alogger
+
 Run migration using php artisan migrate, loggers table will get migrated.
 Use `Alogger::class` middleware in your routes in a group or individually.
 
@@ -65,11 +66,11 @@ You can use `Alogger Service` to record the log manually from your controller or
 Available methods to be used with Alogger Service
 | Methods | Description |
 |--|--|
-| `remarks($remarks,  $data  =  null)` | you can set remarks and data here |
-| `activity($activity,  $data  =  null)` | equivalent to remarks functions |
-| `data($data)` | setting the data, if not set with remarks or activity method |
-| `user($user)` | You can set user by passing user id or user model |
-| `log($user_id  =  null,  $url  =  null,  $data  =  null,  $remarks  =  null)` | logs the activity |
+| *remarks($remarks,  $data  =  null)* | you can set remarks and data here |
+| *activity($activity,  $data  =  null)* | equivalent to remarks functions |
+| *data($data)* | setting the data, if not set with remarks or activity method |
+| *user($user)* | You can set user by passing user id or user model |
+| *log($user_id  =  null,  $url  =  null,  $data  =  null,  $remarks  =  null)* | logs the activity |
 
 - - -
 If you want to contribute, have any suggestion or want say something, please write to takshaktiwari@gmail.com

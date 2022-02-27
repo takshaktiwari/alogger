@@ -65,11 +65,11 @@ You can use `Alogger Service` to record the log manually from your controller or
 Available methods to be used with Alogger Service
 | Methods | Description |
 |--|--|
-| remarks($remarks,  $data  =  null) | you can set remarks and data here |
-| activity($activity,  $data  =  null) | equivalent to remarks functions |
-| data($data) | setting the data, if not set with remarks or activity method |
-| user($user) | You can set user by passing user id or user model |
-| log($user_id  =  null,  $url  =  null,  $data  =  null,  $remarks  =  null) | logs the activity |
+| `remarks($remarks,  $data  =  null)` | you can set remarks and data here |
+| `activity($activity,  $data  =  null)` | equivalent to remarks functions |
+| `data($data)` | setting the data, if not set with remarks or activity method |
+| `user($user)` | You can set user by passing user id or user model |
+| `log($user_id  =  null,  $url  =  null,  $data  =  null,  $remarks  =  null)` | logs the activity |
 
 - - -
 If you want to contribute, have any suggestion or want say something, please write to takshaktiwari@gmail.com

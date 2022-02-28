@@ -43,7 +43,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             <a href="{{ url($l_logger->url) }}" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
+                                <i class="fas fa-external-link-alt fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                             <b class="px-1">|</b>
                             <a href="{{ $filter(['url' => $l_logger->url]) }}">
@@ -64,9 +64,9 @@
                             </a>
                         </td>
                         <td>{{ $l_logger->remarks }}</td>
-                        <td class="text-nowrap">
+                        <td class="text-nowrap align-middle">
                             <a href="{{ $filter(['id' => $l_logger->id]) }}" class="btn btn-info btn-sm">
-                                Info
+                                <i class="fa-solid fas fa-circle-info"></i> Info
                             </a>
                         </td>
                     </tr>

@@ -105,7 +105,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-dismiss="modal">Close</button>
+                <a href="{{ $request->url().'?'.http_build_query($request->except('id')); }}" class="btn btn-danger">Close</a>
             </div>
 
         </div>

@@ -56,12 +56,12 @@
                             </a>
                         </td>
                         <td>
-                            <a class="d-block" href="{{ $filter(['user_id' => $l_logger->user_id]) }}">
+                            <a class="" href="{{ $filter(['user_id' => $l_logger->user_id]) }}">
                                 {{ $l_logger->user ? $l_logger->user->name : null }}
                             </a>
-                            <a class="d-block" href="{{ $filter(['ip' => $l_logger->ip]) }}">
+                            (<a class="" href="{{ $filter(['ip' => $l_logger->ip]) }}">
                                 {{ $l_logger->ip }}
-                            </a>
+                            </a>)
                         </td>
                         <td>{{ $l_logger->remarks }}</td>
                         <td class="text-nowrap align-middle">

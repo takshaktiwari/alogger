@@ -19,7 +19,9 @@ Use `Alogger::class` middleware in your routes in a group or individually.
     	/* *
     	...
     });
-    
+
+See your all recorded logs via `https://domain.com/aloggers`
+
 ## More Information
 All logs will be stored in loggers table. You can set your preference in `alogger.php`. Run the following command to publish configurations.
 
@@ -27,6 +29,8 @@ All logs will be stored in loggers table. You can set your preference in `alogge
 
 ### Configuration (alogger.php)
 **`log:`**  you can disable or enable the logger by setting this value *true* or *false*
+
+**`routes:`**  wold to like to enable predefined routes (https://example.com/aloggers) to see all logs *true* or *false*
 
 **`record:`** set all the available properties which will be recorded. *status* key will define tha this parameter needs to be recorded or not. *except* key will ignore (not record) the matching values
 

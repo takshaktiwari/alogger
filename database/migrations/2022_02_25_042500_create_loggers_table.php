@@ -17,7 +17,7 @@ class CreateLoggersTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->nullable()->default(null);
             $table->string('ip')->nullable()->default(null);
-            $table->string('url')->nullable()->default(null);
+            $table->text('url')->nullable()->default(null);
             $table->string('method')->nullable()->default(null);
             $table->text('session')->nullable()->default(null)->comment('session data');
             $table->text('request')->nullable()->default(null)->comment('request data');

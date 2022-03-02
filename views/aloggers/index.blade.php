@@ -11,6 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         a{ text-decoration: none; }
+        body { font-size: 14px; }
+        body tr td { vertical-align: middle; }
+        body tr td .btn { font-size: 12px; }
     </style>
 </head>
 <body>

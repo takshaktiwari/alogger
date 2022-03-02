@@ -26,7 +26,7 @@
         </form>
     </div>
     <div class="card-body table-responsive">
-        <table class="table table-bordered mb-0">
+        <table class="table table-bordered mb-0 table-sm">
             <thead>
                 <tr>
                     <th>#</th>
@@ -63,9 +63,14 @@
                                 {{ $l_logger->ip }}
                             </a>)
                         </td>
-                        <td>{{ $l_logger->remarks }}</td>
+                        <td>
+                            <div class="small">{{ $l_logger->remarks }}</div>
+                            <span class="d-block small text-secondary">
+                                {{ $l_logger->created_at->format('Y-m-d H:i:s A') }}
+                            </span>
+                        </td>
                         <td class="text-nowrap align-middle">
-                            <a href="{{ $filter(['id' => $l_logger->id]) }}" class="btn btn-info btn-sm">
+                            <a href="{{ $filter(['id' => $l_logger->id]) }}&page={{ $request->get('page') }}" class="btn btn-info btn-sm">
                                 <i class="fa-solid fas fa-circle-info"></i> Info
                             </a>
                         </td>
@@ -75,7 +80,7 @@
         </table>
     </div>
     <div class="card-footer d-flex justify-content-between">
-        {{ $loggers->links() }}
+        {{ $loggers->appends($request->except(['id']))->links() }}
 
         @if ($request->get('l_filters'))
             <div class="alogger-filter my-auto">
@@ -105,7 +110,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <a href="{{ $request->url().'?'.http_build_query($request->except('id')); }}" class="btn btn-danger">Close</a>
+                <button class="btn btn-danger" data-bs-dismiss="modal" data-dismiss="modal">Close</a>
             </div>
 
         </div>

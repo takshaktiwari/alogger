@@ -28,7 +28,7 @@ return [
         'session'   =>  [
             'status'    =>  true,
             'except'    =>  [
-                '_token'
+                '_token', 'password_hash_web'
             ],
         ],
         'request'   =>  [

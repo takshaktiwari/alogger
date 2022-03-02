@@ -50,7 +50,7 @@ class Loggers extends Component
         $url = $this->request->url();
         $url .= '?';
         $url .= http_build_query(
-            array_merge($this->request->all(), $params)
+            array_merge($this->request->except(['page', 'id']), $params)
         );
         return $url;
     }

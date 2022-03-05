@@ -42,32 +42,32 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                            <a href="{{ url($l_logger->url) }}" target="_blank">
+                            <a href="{{ url($l_logger->url) }}" target="_blank" title="Open link">
                                 <i class="fas fa-external-link-alt fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                             <b class="px-1">|</b>
-                            <a href="{{ $filter(['url' => $l_logger->url]) }}">
+                            <a href="{{ $filter(['url' => $l_logger->url]) }}" title="Filter by Url">
                                 {{ strlen($l_logger->url) > 30 ? substr($l_logger->url, 0, 30) . '...' : $l_logger->url }}
                             </a>
                         </td>
                         <td>
-                            <a href="{{ $filter(['method' => $l_logger->method]) }}">
+                            <a href="{{ $filter(['method' => $l_logger->method]) }}" title="Filter by method">
                                 {{ $l_logger->method }}
                             </a>
                         </td>
                         <td>
-                            <a class="" href="{{ $filter(['user_id' => $l_logger->user_id]) }}">
+                            <a class="" href="{{ $filter(['user_id' => $l_logger->user_id]) }}" title="Filter by user">
                                 {{ $l_logger->user ? $l_logger->user->name : null }}
                             </a>
-                            (<a class="" href="{{ $filter(['ip' => $l_logger->ip]) }}">
+                            (<a class="" href="{{ $filter(['ip' => $l_logger->ip]) }}" title="Filter by ip">
                                 {{ $l_logger->ip }}
                             </a>)
                         </td>
                         <td>
                             <div class="small">{{ $l_logger->remarks }}</div>
-                            <span class="d-block small text-secondary">
+                            <a href="{{ $filter(['created' => $l_logger->created_at->format('Y-m-d')]) }}" class="d-block small" title="Filter thi date">
                                 {{ $l_logger->created_at->format('Y-m-d H:i:s A') }}
-                            </span>
+                            </a>
                         </td>
                         <td class="text-nowrap align-middle">
                             <a href="{{ $filter(['id' => $l_logger->id]) }}&page={{ $request->get('page') }}" class="btn btn-info btn-sm">

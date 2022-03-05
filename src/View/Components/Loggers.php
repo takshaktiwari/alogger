@@ -2,6 +2,7 @@
 
 namespace Takshak\Alogger\View\Components;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\Component;
 use Takshak\Alogger\Models\Logger;
@@ -27,6 +28,10 @@ class Loggers extends Component
         }
         if ($this->request->get('user_id')) {
             $query->where('user_id', $this->request->get('user_id'));
+        }
+        if ($this->request->get('created')) {
+            $query->where('created_at', '>', Carbon::parse($this->request->get('created'))->format('Y-m-d 00:00:01'));
+            $query->where('created_at', '<', Carbon::parse($this->request->get('created'))->format('Y-m-d 23:59:59'));
         }
 
         if ($this->request->get('search')) {

@@ -48,7 +48,7 @@ All logs will be stored in loggers table. You can set your preference in `alogge
 ### Components
 It has two components with compatible with **bootstrap 4** or **5**
 
-**`<x-alogger-loggers  />`** This component can be used to display all the logs on any page. This has some search and filters and view button for a popup to show the details of the log.
+**`<x-alogger-loggers  />`** This component can be used to display all the logs on any page. This has some search and filters and view button for a popup to show the details of the log. You  can pass `paginate` property to show number of items per page, default is 50 and `order` property to order the list by *oldest* first or *latest* first, default value is *latest*. Eg. `<x-alogger-loggers paginate="100" order='latest' />`
 
 **`<x-alogger-logger logger-id=""  />`**  This component will show the detail of a log. You need to pass the logger id for which you want to see the details
 

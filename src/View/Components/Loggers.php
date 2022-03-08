@@ -12,7 +12,7 @@ class Loggers extends Component
     public $paginate;
     public $loggers;
     public $request;
-    public function __construct($paginate = 50)
+    public function __construct($paginate = 50, $order = 'latest')
     {
         $this->request = request();
         $query = Logger::with('user');
@@ -46,7 +46,7 @@ class Loggers extends Component
             });
         }
 
-        $this->loggers = $query->paginate($paginate);
+        $this->loggers = $query->orderBy('id', ($order == 'latest') ? 'DESC' : 'ASC')->paginate($paginate);
     }
 
     public function filter($params = [])
